@@ -1,0 +1,55 @@
+1..NEXT GREATER TO RIGHT:
+
+stack=[]
+        ans=[]
+        j=len(arr)-1
+        while j>=0:
+            if len(stack)==0:
+                stack.append(-1)
+            else:
+                while stack[-1]<=arr[j] and stack[-1]!=-1:
+                    stack.pop()
+            ans.append(stack[-1])
+            stack.append(arr[j])
+            j-=1
+        
+        return ans[len(ans)::-1]
+        
+2.....VALID PARANTHESIS:
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack=[]
+        bracket_map={")":"(","}":"{","]":"["}
+        opening_bracket=set(["(","{","["])
+        for x in s:
+            if x in opening_bracket:
+                stack.append(x)
+            elif stack and stack[-1]==bracket_map[x]:
+                stack.pop()
+            else:
+                return False
+        if stack:
+            return False
+        else:
+            return True
+            
+ 3...NEXT SMALL FROM LEFT
+ 
+ class Solution:
+    def leftSmaller(self, n, a):
+        ans=[]
+        stack=[]
+        j=0
+        while j<n:
+            if len(stack)==0:
+                stack.append(-1)
+            else:
+                while stack[-1]>=a[j] and stack[-1]!=-1:
+                    stack.pop()
+            ans.append(stack[-1])
+            stack.append(a[j])
+            j+=1
+        return ans
+        
+ 
